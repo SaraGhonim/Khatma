@@ -1,19 +1,21 @@
 import * as React from 'react';
 import {View} from 'react-native';
-import {Searchbar, Button} from 'react-native-paper';
-import LottieView from 'lottie-react-native';
+import FastImage from 'react-native-fast-image';
 
 const App = () => {
-  const [searchQuery, setSearchQuery] = React.useState('');
 
-  const onChangeSearch = (query) => setSearchQuery(query);
 
   return (
-     <View style={{backgroundColor:'pink',flex:1}}>
+    <View style={{backgroundColor: 'pink', flex: 1}}>
+      <FastImage
+        style={{width: 200, height: 200}}
+        source={{
+            uri: 'https://unsplash.it/400/400?image=1',
+        }}    
+            resizeMode={FastImage.resizeMode.contain}
+      />
 
-     <LottieView source={require('./bismillah.json')} autoPlay loop />
-     </View>
-
+    </View>
   );
 };
 
