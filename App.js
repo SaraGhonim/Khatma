@@ -1,73 +1,28 @@
-import React,{useState} from 'react';
-import {Button,View} from 'react-native';
-import RNFetchBlob from 'react-native-fetch-blob';
-import RNDownloadButton from 'react-native-download-button';
+import * as React from 'react';
+import {View} from 'react-native';
+import {Searchbar, Button} from 'react-native-paper';
 
 const App = () => {
-  const [done, setDone] = useState(0)
+  const [searchQuery, setSearchQuery] = React.useState('');
+
+  const onChangeSearch = (query) => setSearchQuery(query);
+
   return (
-    <>
-<View style={{flex:1 ,backgroundColor:'red'}}>
-{/* <Button title='download' onPress={()=>{
+    <View style={{flex: 1, backgroundColor: 'gray'}}>
+      <Searchbar
+        placeholder="Search"
+        onChangeText={onChangeSearch}
+        value={searchQuery}
+      />
 
-RNFetchBlob
-  .config({
-    // add this option that makes response data to be stored as a file,
-    // this is much more performant.
-    fileCache : true,
-    addAndroidDownloads: {
-        useDownloadManager: true,
-        notification: true,
-        path: RNFetchBlob.fs.dirs.DownloadDir + '/path-to-file.mp3', // Android platform
-        description: 'Downloading the file',
-      },
-
-  })
-  .fetch('GET', 'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m', {
-    //some headers ..
-  })
-  .progress({ count : 10 }, (received, total) => {
-        console.log('progress', 100-(received / total)/-100000)
-        
-        setDone(100+((received / (total*100000))))
-        })
-  .then((res) => {
-    // the temp file path
-    console.log('The file saved to ', res.path())
-  })
-}}>
-
-</Button> */}
-<RNDownloadButton  size={300} progress={done} onPress={()=>{
-
-RNFetchBlob
-  .config({
-    // add this option that makes response data to be stored as a file,
-    // this is much more performant.
-    fileCache : true,
-    addAndroidDownloads: {
-        useDownloadManager: true,
-         path: RNFetchBlob.fs.dirs.DownloadDir + '/path-to-file.mp3', // Android platform
-        description: 'Downloading the file',
-      },
-
-  })
-  .fetch('GET', 'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m', {
-    //some headers ..
-  })
-  .progress({ count : 10 }, (received, total) => {
-        console.log('progress', 100-(received / total)/-100000)
-        
-        setDone(100+((received / (total*100000))))
-        })
-  .then((res) => {
-    setDone(100)
-    // the temp file path
-    console.log('The file saved to ', res.path())
-  })
-}}/>
-</View>
-    </>
+      <Button
+        icon="camera"
+        mode="contained"
+        onPress={() => console.log('Pressed')}
+        style={{margin: 50}}>
+        Press me
+      </Button>
+    </View>
   );
 };
 
