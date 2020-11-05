@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, Button, SafeAreaView} from 'react-native';
+import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native';
 import TrackPlayer from 'react-native-track-player';
+import OfflineNotice from './src/components/OfflineNotice';
 
 const App = () => {
   const trackPlayerInit = async () => {
@@ -45,17 +46,30 @@ const App = () => {
         <View
           style={{
             flex: 1,
-            backgroundColor: 'papayawhip',
+            backgroundColor: 'white',
           }}>
-          <Text>Music Player</Text>
-          <Button title="Play" onPress={play} disabled={!isTrackPlayerInit} />
-          <Text>Music Player</Text>
-
-          <Button
-            style={{margin: 10, padding: 10}}
-            title="Pause"
-            onPress={pause}
-          />
+          <OfflineNotice />
+          <TouchableOpacity
+            style={{
+              backgroundColor: 'dodgerblue',
+              marginHorizontal: 60,
+              padding: 10,
+              borderRadius: 10,
+              margin: 20,
+            }}
+            onPress={play}>
+            <Text style={{textAlign: 'center', color: 'white'}}>Play</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              backgroundColor: 'dodgerblue',
+              marginHorizontal: 60,
+              padding: 10,
+              borderRadius: 10,
+            }}
+            onPress={pause}>
+            <Text style={{textAlign: 'center', color: 'white'}}>Pause</Text>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     </>
