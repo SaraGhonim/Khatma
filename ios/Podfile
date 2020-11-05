@@ -7,11 +7,10 @@ target 'Khatma' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
-
+  pod 'RNDownloadButton', :path => '../node_modules/react-native-download-button/ios'
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
-
-  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
-
+  pod 'react-native-fetch-blob', :path => '../node_modules/react-native-fetch-blob'
+  
   target 'KhatmaTests' do
     inherit! :complete
     # Pods for testing

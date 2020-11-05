@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, SafeAreaView} from 'react-native';
 import BottomSheet from 'reanimated-bottom-sheet';
 
 const App = () => {
@@ -8,7 +8,7 @@ const App = () => {
       style={{
         backgroundColor: 'white',
         padding: 16,
-        height: 450,
+        height: '100%',
       }}>
       <Text>Swipe down to close</Text>
     </View>
@@ -17,21 +17,29 @@ const App = () => {
   const sheetRef = React.useRef(null);
   return (
     <>
-      <View
+      <SafeAreaView
         style={{
           flex: 1,
           backgroundColor: 'papayawhip',
-          alignItems: 'center',
-          justifyContent: 'center',
         }}>
-        <Button
-          title="Open Bottom Sheet"
-          onPress={() => sheetRef.current.snapTo(0)}
-        />
-      </View>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: 'papayawhip',
+          }}>
+          <Button
+            title="Open Bottom Sheet"
+            onPress={() => sheetRef.current.snapTo(0)}
+          />
+          <Button
+            title="close Bottom Sheet"
+            onPress={() => sheetRef.current.snapTo(1)}
+          />
+        </View>
+      </SafeAreaView>
       <BottomSheet
         ref={sheetRef}
-        snapPoints={[450, 300, 0]}
+        snapPoints={['90%', 100]}
         borderRadius={10}
         renderContent={renderContent}
       />
