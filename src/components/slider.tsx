@@ -2,33 +2,39 @@ import * as React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, View,Text,Image } from 'react-native';
 import AppIntroSlider  from 'react-native-app-intro-slider';
-
+import Home from '../screens/home'
 const slides = [
   {
     key: 'one',
     title: 'Title 1',
     text: 'Description.\nSay something cool',
-    image: require('./moto.jpg'),
+    image: require('../../moto.jpg'),
     backgroundColor: '#59b2ab',
   },
   {
     key: 'two',
     title: 'Title 2',
     text: 'Other cool stuff',
-     image: require('./moto.jpg'),
+     image: require('../../moto.jpg'),
     backgroundColor: '#febe29',
   },
   {
     key: 'three',
     title: 'Rocket guy',
     text: 'I\'m already out of descriptions\n\nLorem ipsum bla bla bla',
-     image: require('./moto.jpg'),
+     image: require('../../moto.jpg'),
     backgroundColor: '#22bcb5',
   }
 ];
 type Item = typeof slides[0];
 
-const App = () => {
+const Slider = ({navigation}) => {
+  const [showApp, setShowApp] = React.useState(false);
+
+  const _onDone=()=>{
+    // setShowApp(true)
+    navigation.navigate('Home')
+  }
  const  _renderNextButton = () => {
     return (
       <View style={styles.buttonCircle}>
@@ -64,13 +70,14 @@ const App = () => {
   
 
   return (
+    showApp? <Home/> :
      
      <AppIntroSlider
         data={slides}
         renderItem={_renderItem}
         renderNextButton={_renderNextButton}
         renderDoneButton={_renderDoneButton}
-
+        onDone={()=> navigation.navigate('Home')}
       />
   );
 };
@@ -100,4 +107,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-export default App;
+export default Slider;

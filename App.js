@@ -1,78 +1,35 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native';
-import TrackPlayer from 'react-native-track-player';
-import OfflineNotice from './src/components/OfflineNotice';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './src/screens/home'
+import SplashScreen from './src/screens/splash'
+import BasmalaScreen from './src/screens/basmala'
+import SettingsScreen from './src/screens/settings'
+import SliderScreen from './src/components/slider'
+import OfflineNotice from './src/components/OfflineNotice'
+
+const Stack = createStackNavigator();
 
 const App = () => {
-  const trackPlayerInit = async () => {
-    await TrackPlayer.setupPlayer();
-    await TrackPlayer.add({
-      id: '1',
-      url:
-        'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-      type: 'default',
-      title: 'Surat Maryam',
-      album: 'My Album',
-      artist: 'a7med ell7dan',
-      artwork: 'https://picsum.photos/100',
-    });
-    return true;
-  };
-  const [isTrackPlayerInit, setIsTrackPlayerInit] = useState(false);
-
-  //initialize the TrackPlayer when the App component is mounted
-  useEffect(() => {
-    const startPlayer = async () => {
-      let isInit = await trackPlayerInit();
-      setIsTrackPlayerInit(isInit);
-    };
-    startPlayer();
-  }, []);
-
-  const play = () => {
-    TrackPlayer.play();
-  };
-  const pause = () => {
-    TrackPlayer.pause();
-  };
+  
 
   return (
-    <>
-      <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: 'red',
-        }}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: 'white',
-          }}>
-          <OfflineNotice />
-          <TouchableOpacity
-            style={{
-              backgroundColor: 'dodgerblue',
-              marginHorizontal: 60,
-              padding: 10,
-              borderRadius: 10,
-              margin: 20,
-            }}
-            onPress={play}>
-            <Text style={{textAlign: 'center', color: 'white'}}>Play</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              backgroundColor: 'dodgerblue',
-              marginHorizontal: 60,
-              padding: 10,
-              borderRadius: 10,
-            }}
-            onPress={pause}>
-            <Text style={{textAlign: 'center', color: 'white'}}>Pause</Text>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
-    </>
+    
+    <NavigationContainer>
+              <OfflineNotice />
+
+      <Stack.Navigator>
+        <Stack.Screen name="Splash" component={SplashScreen} />
+        <Stack.Screen name="Slider" component={SliderScreen} />
+
+        <Stack.Screen name="Basmala" component={BasmalaScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'My home' }} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
+
+      </Stack.Navigator>
+    </NavigationContainer>
+    
+     
   );
 };
 
