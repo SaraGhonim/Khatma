@@ -18,7 +18,7 @@ RNFetchBlob
     fileCache : true,
     addAndroidDownloads: {
         useDownloadManager: true,
-         path: RNFetchBlob.fs.dirs.DownloadDir + '/path-to-file.mp3', // Android platform
+        path: RNFetchBlob.fs.dirs.DownloadDir + '/path-to-file.mp3', // Android platform
         description: 'Downloading the file',
       },
 

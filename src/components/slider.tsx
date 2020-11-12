@@ -3,27 +3,30 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, View,Text,Image } from 'react-native';
 import AppIntroSlider  from 'react-native-app-intro-slider';
 import Home from '../screens/home'
+import theme from '../constants/theme'
+import {setLanguage, t} from '../translations/i18n';
+
 const slides = [
   {
     key: 'one',
-    title: 'Title 1',
-    text: 'Description.\nSay something cool',
-    image: require('../../moto.jpg'),
-    backgroundColor: '#59b2ab',
+    title: t('slider.first.title'),
+    text:   t('slider.first.next'),
+    image: require('_assets/3.jpg'),
+    backgroundColor: theme.light.colors.primary,
   },
   {
     key: 'two',
-    title: 'Title 2',
+    title:  t('slider.second.title'),
     text: 'Other cool stuff',
-     image: require('../../moto.jpg'),
-    backgroundColor: '#febe29',
+     image: require('_assets/3.jpg'),
+    backgroundColor: theme.light.colors.primary,
   },
   {
     key: 'three',
-    title: 'Rocket guy',
+    title: t('slider.third.title'),
     text: 'I\'m already out of descriptions\n\nLorem ipsum bla bla bla',
-     image: require('../../moto.jpg'),
-    backgroundColor: '#22bcb5',
+     image: require('_assets/3.jpg'),
+    backgroundColor: theme.light.colors.primary,
   }
 ];
 type Item = typeof slides[0];
@@ -86,24 +89,24 @@ const styles = StyleSheet.create({
   buttonCircle: {
     width: 40,
     height: 40,
-    backgroundColor: 'rgba(0, 0, 0, .2)',
+    backgroundColor: theme.light.colors.secondary,
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
-    color: 'rgba(100, 100, 100, 0.8)',
+    color: theme.light.colors.secondary,
     textAlign: 'center',
   },
    slide: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white',
+    backgroundColor: theme.light.colors.primary,
   },
   title: {
     fontSize: 22,
-    color: 'gray',
+    color: theme.light.colors.secondary,
     textAlign: 'center',
   },
 });

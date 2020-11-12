@@ -7,6 +7,7 @@ import BasmalaScreen from './src/screens/basmala'
 import SettingsScreen from './src/screens/settings'
 import SliderScreen from './src/components/slider'
 import OfflineNotice from './src/components/OfflineNotice'
+import SurahsContextProvider from "./src/contexts/todoList";
 
 const Stack = createStackNavigator();
 
@@ -14,11 +15,15 @@ const App = () => {
   
 
   return (
+    <SurahsContextProvider>
+
     
-    <NavigationContainer>
+    <NavigationContainer headerMode="none">
               <OfflineNotice />
 
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{
+          headerShown: false,
+        }}>
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Slider" component={SliderScreen} />
 
@@ -28,6 +33,7 @@ const App = () => {
 
       </Stack.Navigator>
     </NavigationContainer>
+    </SurahsContextProvider>
     
      
   );
