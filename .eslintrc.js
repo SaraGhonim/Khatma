@@ -9,9 +9,6 @@ module.exports = {
         alias: {
           _assets: './src/assets',
           _components: './src/components',
-          _atoms: './src/components/atoms',
-          _molecules: './src/components/molecules',
-          _organisms: './src/components/organisms',
           _navigations: './src/navigations',
           _scenes: './src/scenes',
           _services: './src/services',
@@ -19,7 +16,7 @@ module.exports = {
           _utils: './src/utils',
           _contexts: './src/contexts',
           _constants: './src/constants',
-          _global: './src/global',
+          _globals: './src/globals',
           _translations:'./src/translations',
           
         },

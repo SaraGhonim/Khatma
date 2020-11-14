@@ -11,9 +11,8 @@
             "_components": "./src/components",
             "_contexts": "./src/contexts",
             "_constants": "./src/constants",
-            "_global": "./src/global",
-            "_translations": "./src/translations",
-            
+            "_globals": "./src/globals",
+            "_translations": "./src/translations",     
             "_navigations": "./src/navigations",
             "_screens": "./src/screens",
             "_services": "./src/services",

@@ -1,4 +1,4 @@
-import {t} from '../translations/i18n';
+import {t} from '_translations/i18n';
 
 const Surahs = [
   {
@@ -70,134 +70,134 @@ const Surahs = [
     id: 8,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: "",
+    name: t('Home.8'),
     status: 'play',
   },
   {
     id: 9,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: "",
+    name: t('Home.9'),
     status: 'play',
   },
   {
     id: 10,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
+    name: t('Home.10'),
     status: 'play',
   },
   {
     id: 11,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
+    name: t('Home.11'),
     status: 'play',
   },
   {
     id: 12,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
+    name: t('Home.12'),
     status: 'play',
   },
   {
     id: 13,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
+    name: t('Home.13'),
     status: 'play',
   },
   {
     id: 14,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
+    name: t('Home.14'),
     status: 'play',
   },
   {
     id: 15,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
-    status: 'play',
+      name: t('Home.15'),
+      status: 'play',
   },
   {
     id: 16,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
-    status: 'play',
+      name: t('Home.16'),
+      status: 'play',
   },
   {
     id: 17,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
-    status: 'play',
+      name: t('Home.17'),
+      status: 'play',
   },
   {
     id: 18,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
-    status: 'play',
+      name: t('Home.18'),
+      status: 'play',
   },
   {
     id: 19,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
-    status: 'play',
+      name: t('Home.19'),
+      status: 'play',
   },
   {
     id: 20,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
-    status: 'play',
+      name: t('Home.20'),
+      status: 'play',
   },
   {
     id: 21,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
-    status: 'play',
+      name: t('Home.21'),
+      status: 'play',
   },
   {
     id: 22,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
-    status: 'play',
+      name: t('Home.22'),
+      status: 'play',
   },
   {
     id: 23,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
-    status: 'play',
+      name: t('Home.23'),
+      status: 'play',
   },
   {
     id: 24,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
-    status: 'play',
+      name: t('Home.24'),
+      status: 'play',
   },
   {
     id: 25,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
-    status: 'play',
+      name: t('Home.25'),
+      status: 'play',
   },
   {
     id: 26,
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Surat Ale-Emran',
-    status: 'play',
+      name: t('Home.26'),
+      status: 'play',
   },
 ];
 

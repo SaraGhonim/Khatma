@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import LottieView from 'lottie-react-native';
-import Slider from '../components/slider';
+import Slider from '_components/slider';
 import {Button} from 'react-native-paper';
-import theme from '../constants/theme';
+import theme from '_constants/theme';
 import FastImage from 'react-native-fast-image';
-import {setLanguage, t} from '../translations/i18n';
+import {setLanguage, t} from '_translations/i18n';
 import TrackPlayer from 'react-native-track-player';
 import RNRestart from 'react-native-restart';
 import * as Animatable from 'react-native-animatable';

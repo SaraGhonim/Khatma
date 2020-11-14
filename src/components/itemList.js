@@ -1,8 +1,9 @@
 import React ,{useState,useEffect} from 'react';
 import {View} from 'react-native';
 import {IconButton, Card, Title, } from 'react-native-paper';
-import theme from '../constants/theme';
+import theme from '_constants/theme';
 import TrackPlayer from 'react-native-track-player';
+import { useCounter } from '../globals/states/sound';
 
 
 
@@ -25,6 +26,8 @@ class MyPlayerBar extends TrackPlayer.ProgressComponent {
   
 }
 const ItemList = ({name,url,duration}) => { 
+  const [state, actions] = useCounter();
+
   const trackPlayerInit = async () => {
     await TrackPlayer.setupPlayer();
     await TrackPlayer.add({
@@ -32,7 +35,7 @@ const ItemList = ({name,url,duration}) => {
       url:
         url,
       type: 'default',
-      title: 'Surat Maryam',
+      title: name,
       artist: 'Ibraheem El-Maghraby',
       artwork: 'https://picsum.photos/100',
     });
@@ -55,10 +58,12 @@ const ItemList = ({name,url,duration}) => {
   const play = () => {
     TrackPlayer.play();
     setPauseIcon(true);
+actions.toggle
   };
   const pause = () => {
     TrackPlayer.pause();
     setPauseIcon(false);
+    actions.toggle
 
   };
   return (
@@ -82,7 +87,7 @@ const ItemList = ({name,url,duration}) => {
           right={(props) => (
             <IconButton
               {...props}
-              icon={pauseIcon? "pause": "play"}
+              icon={pauseIcon? "pause": "play" }
               color={theme.light.colors.secondary}
               onPress={pauseIcon? pause :play}
             />

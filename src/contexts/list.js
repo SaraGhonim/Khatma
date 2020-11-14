@@ -1,6 +1,6 @@
 import React, { useState, createContext } from "react";
-import {setLanguage, t} from '../translations/i18n';
-import Surahs from '../constants/mocks'
+import {setLanguage, t} from '_translations/i18n';
+import Surahs from '_constants/mocks'
 
 export const SurahsContext = createContext();
 

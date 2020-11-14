@@ -2,9 +2,9 @@ import * as React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, View,Text,Image } from 'react-native';
 import AppIntroSlider  from 'react-native-app-intro-slider';
-import Home from '../screens/home'
-import theme from '../constants/theme'
-import {setLanguage, t} from '../translations/i18n';
+import Home from '_screens/home'
+import theme from '_constants/theme'
+import {setLanguage, t} from '_translations/i18n';
 
 const slides = [
   {

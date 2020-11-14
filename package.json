@@ -40,6 +40,7 @@
     "react-native-swift": "^1.2.3",
     "react-native-track-player": "^1.2.3",
     "react-native-vector-icons": "^7.1.0",
+    "react-sweet-state": "^2.4.4",
     "reanimated-bottom-sheet": "^1.0.0-alpha.22"
   },
   "devDependencies": {

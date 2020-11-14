@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from './src/screens/home'
-import SplashScreen from './src/screens/splash'
-import BasmalaScreen from './src/screens/basmala'
-import SettingsScreen from './src/screens/settings'
-import SliderScreen from './src/components/slider'
-import OfflineNotice from './src/components/OfflineNotice'
-import SurahsContextProvider from "./src/contexts/todoList";
+import HomeScreen from '_screens/home'
+import SplashScreen from '_screens/splash'
+import BasmalaScreen from '_screens/basmala'
+import SettingsScreen from '_screens/settings'
+import SliderScreen from '_components/slider'
+import OfflineNotice from '_components/OfflineNotice'
+import SurahsContextProvider from "_contexts/list";
 
 const Stack = createStackNavigator();
 

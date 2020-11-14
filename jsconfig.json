@@ -12,10 +12,10 @@
         "_services": ["src/services/*"],
         "_styles": ["src/styles/*"],
         "_utils": ["src/utils/*"],
-        "_contexts": ["./src/contexts"],
-        "_constants": ["./src/constants"],
-        "_global": ["./src/global"],
-        "_translations": ["./src/translations"]
+        "_contexts": ["./src/contexts/*"],
+        "_constants": ["./src/constants/*"],
+        "_globals": ["./src/globals/*"],
+        "_translations": ["./src/translations/*"]
         
       }
     }
