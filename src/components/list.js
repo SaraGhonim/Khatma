@@ -4,13 +4,9 @@ import {Avatar, IconButton, Card, Title, Searchbar} from 'react-native-paper';
 import ItemList from './itemList';
 import swr from '_constants/mocks';
 import theme from '_constants/theme';
-import { useCounter } from '_globals/states/sound';
+import {useCounter} from '_globals/state/sound';
 
-import {SurahsContext} from '_contexts/list';
-
-const List = () => {
-  const {surahsList} = useContext(SurahsContext);
-
+const List = ({playerRef}) => {
   const [pauseIcon, setPauseIcon] = useState(false);
   const [pauseIcon1, setPauseIcon1] = useState(false);
   const [state, actions] = useCounter();
@@ -42,11 +38,10 @@ const List = () => {
             name={item.name}
             url={item.url}
             duration={item.duration}
+            playerRef={playerRef}
           />
         )}
       />
-
-
     </View>
   );
 };

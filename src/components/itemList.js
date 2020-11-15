@@ -1,39 +1,33 @@
-import React ,{useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
-import {IconButton, Card, Title, } from 'react-native-paper';
+import {IconButton, Card, Title} from 'react-native-paper';
 import theme from '_constants/theme';
 import TrackPlayer from 'react-native-track-player';
-import { useCounter } from '../globals/states/sound';
-
-
+import {useCounter} from '../globals/state/sound';
 
 class MyPlayerBar extends TrackPlayer.ProgressComponent {
-
   render() {
-    let x= this.state.position
-    let y= this.state.duration
-    setDuration(y)
-      return (
-          <View>
-              {/* <Text>{this.getProgress()}</Text>
+    let x = this.state.position;
+    let y = this.state.duration;
+    setDuration(y);
+    return (
+      <View>
+        {/* <Text>{this.getProgress()}</Text>
               <Text>{this.getBufferedProgress()}</Text>
               <Text>position { x/60 } :  {x%60}  </Text> */}
-               <Text>duration { y/60 } </Text>
-
-          </View>
-      );
+        <Text>duration {y / 60} </Text>
+      </View>
+    );
   }
-  
 }
-const ItemList = ({name,url,duration}) => { 
+const ItemList = ({name, url, duration, playerRef}) => {
   const [state, actions] = useCounter();
 
   const trackPlayerInit = async () => {
     await TrackPlayer.setupPlayer();
     await TrackPlayer.add({
       id: '1',
-      url:
-        url,
+      url: url,
       type: 'default',
       title: name,
       artist: 'Ibraheem El-Maghraby',
@@ -57,43 +51,41 @@ const ItemList = ({name,url,duration}) => {
 
   const play = () => {
     TrackPlayer.play();
+    playerRef.current.snapTo(2)
     setPauseIcon(true);
-actions.toggle
+    actions.toggle;
   };
   const pause = () => {
     TrackPlayer.pause();
     setPauseIcon(false);
-    actions.toggle
-
+    playerRef.current.snapTo(0)
+    actions.toggle;
   };
   return (
-   
-     
-      <Card
-        elevation={2}
-        icon="camera"
-        style={{
-          backgroundColor: theme.light.colors.primary3,
-          height: 65,
-          borderRadius: 15,
-          margin: 7,
-        }}>
-        <Card.Title
-          title={name}
-          subtitle={duration}
-          titleStyle={{fontSize: 18, color: theme.light.colors.secondary}}
-          subtitleStyle={{color: theme.light.colors.secondary}}
-         
-          right={(props) => (
-            <IconButton
-              {...props}
-              icon={pauseIcon? "pause": "play" }
-              color={theme.light.colors.secondary}
-              onPress={pauseIcon? pause :play}
-            />
-          )}
-        />
-      </Card>
+    <Card
+      elevation={2}
+      icon="camera"
+      style={{
+        backgroundColor: theme.light.colors.primary3,
+        height: 65,
+        borderRadius: 15,
+        margin: 7,
+      }}>
+      <Card.Title
+        title={name}
+        subtitle={duration}
+        titleStyle={{fontSize: 18, color: theme.light.colors.secondary}}
+        subtitleStyle={{color: theme.light.colors.secondary}}
+        right={(props) => (
+          <IconButton
+            {...props}
+            icon={pauseIcon ? 'pause' : 'play'}
+            color={theme.light.colors.secondary}
+            onPress={pauseIcon ? pause : play}
+          />
+        )}
+      />
+    </Card>
   );
 };
 

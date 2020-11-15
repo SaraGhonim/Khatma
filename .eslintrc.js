@@ -17,8 +17,7 @@ module.exports = {
           _contexts: './src/contexts',
           _constants: './src/constants',
           _globals: './src/globals',
-          _translations:'./src/translations',
-          
+          _translations: './src/translations',
         },
       },
     },

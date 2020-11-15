@@ -1,36 +1,55 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, SafeAreaView,Button} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import List from '_components/list';
-import theme from '_constants/theme'
+import theme from '_constants/theme';
 // import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import Animated from 'react-native-reanimated';
 import BottomSheet from 'reanimated-bottom-sheet';
-import { useCounter } from '../globals/states/sound';
-// import {Button} from 'react-native-paper'
+import {useCounter} from '../globals/state/sound';
+import {Div, Button, Icon} from 'react-native-magnus';
 
-const Home = ({ navigation }) => {
-  
- 
+const Home = ({navigation}) => {
   const [state, actions] = useCounter();
   const renderContent = () => (
-    <View
-      style={{
-        backgroundColor:  theme.light.colors.primary3,
-        padding: 16,
-        height: 450,
-      }}
-    >
-    {/* <Button icon={{ source: "add-a-photo", direction: 'rtl' }}>
-  Press me
-</Button> */}
-      <Text>{state.play}</Text>
-    </View>
+    <Div h="100%" bg="white">
+      <Div row justifyContent="center" alignItems="center" mt="xl">
+        <Button
+          bg="white"
+          borderless
+          shadow="sm"
+          h={40}
+          w={40}
+          rounded="circle"
+          alignSelf="center">
+          <Icon name="repeat" color="red500" fontFamily="Feather" />
+        </Button>
+        <Button
+          bg="red500"
+          h={60}
+          w={60}
+          mx="xl"
+          rounded="circle"
+          shadow="md"
+          borderless>
+          <Icon name="play" color="white" fontFamily="Feather" />
+        </Button>
+        <Button
+          bg="white"
+          borderless
+          shadow="sm"
+          h={40}
+          w={40}
+          rounded="circle"
+          alignSelf="center">
+          <Icon name="skip-forward" color="red500" fontFamily="Feather" />
+        </Button>
+      </Div>
+    </Div>
   );
   const sheetRef = React.useRef(null);
 
   return (
     <>
-    
       <SafeAreaView
         style={{
           flex: 1,
@@ -41,33 +60,19 @@ const Home = ({ navigation }) => {
             flex: 1,
             backgroundColor: theme.light.colors.secondary,
           }}>
-   <Button
-          title="Open Bottom Sheet"
-          onPress={()=>
-          sheetRef.current.snapTo(2)
-          }
-         
-          
-        
-        /> 
-        <Button
-          title="toggle"
-          onPress={actions.toggle          }
-         
-          
-        
-        /> 
-          <List/>
-          {/* {state.play&& */}
-          
-            <BottomSheet
-        ref={sheetRef}
-        snapPoints={[0, 300, 450]}
-        borderRadius={10}
-        renderContent={renderContent}
-      />
-          
-          {/* } */}
+          {state.play && <Text>test</Text>}
+          <Button onPress={() => sheetRef.current.snapTo(2)}>
+            Open Bottom Sheet
+          </Button>
+          <Button onPress={actions.toggle}>toggle</Button>
+          <List playerRef={sheetRef} />
+
+          <BottomSheet
+            ref={sheetRef}
+            snapPoints={[0, 300, 450]}
+            borderRadius={10}
+            renderContent={renderContent}
+          />
 
           {/* <TouchableOpacity
             style={{
