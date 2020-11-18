@@ -12,4 +12,4 @@ const Store = createStore({
   },
 });
 
-export const useCounter = createHook(Store);
+export const usePlay = createHook(Store);

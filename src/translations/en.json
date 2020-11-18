@@ -6,22 +6,18 @@
 
   "slider": {
     "first": {
-      "title": "hey",
-      "next": "cool",
-      "lang1": " ",
-      "lang2": "اللغة الإنجليزية"
+      "title": "About the reader",
+      "body": "Dr. Ibrahim Al-Maghrabi, a graduate of the Faculty of Pharmacy, Al-Azhar University, had the first place in the international competition: Eqra' w Ertaqi which is organized by the World Organization for Holy Quran memorization in Saudi Arabia in the year 2014"
     },
     "second": {
-      "title": "مرحبا",
-      "next": "التالي",
-      "lang1": "اللغة العربية",
-      "lang2": "اللغة الإنجليزية"
+      "title": "About the reader",
+      "body": "Had the second place in the Islamic World in the International Competition for the memorization of the Holy Quran in Cairo in 2000,presented about 300 episodes in collecting the ten minor readings through a program: by the Quran's characters, through Atheer the Saudi broadcast Neda' Al-Islam"
     },
     "third": {
-      "title": "مرحبا",
-      "next": "التالي",
-      "lang1": "اللغة العربية",
-      "lang2": "اللغة الإنجليزية"
+      "title": "This Khatma was recorded in Alexandria Radio Studios.",
+      "body": "",
+      "button1": "Download Full Khatma",
+      "button2": "Continue Online"
     }
   },
 

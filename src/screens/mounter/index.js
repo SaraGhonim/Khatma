@@ -18,15 +18,15 @@ const Mounter = () => {
     _bootstrap();
   }, []);
 
-  if (Loading) {
-    return <Splash />;
-  }
-  if (!language) {
-    return <LandingPage />;
-  }
-  if (!launched) {
-    return <InfoSlider />;
-  }
+  // if (Loading) {
+  //   return <Splash />;
+  // }
+  // if (!language) {
+  //   return <LandingPage />;
+  // }
+  // if (!launched) {
+  //   return <InfoSlider />;
+  // }
   return <Navigator />;
 };
 

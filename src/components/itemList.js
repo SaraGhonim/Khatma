@@ -3,7 +3,9 @@ import {View} from 'react-native';
 import {IconButton, Card, Title} from 'react-native-paper';
 import theme from '_constants/theme';
 import TrackPlayer from 'react-native-track-player';
-import {useCounter} from '../globals/state/sound';
+import {usePlay} from '../globals/state/sound';
+import {t} from '_translations/i18n';
+import {Div, Button, Icon, Text} from 'react-native-magnus';
 
 class MyPlayerBar extends TrackPlayer.ProgressComponent {
   render() {
@@ -21,7 +23,7 @@ class MyPlayerBar extends TrackPlayer.ProgressComponent {
   }
 }
 const ItemList = ({name, url, duration, playerRef}) => {
-  const [state, actions] = useCounter();
+  const [state, actions] = usePlay();
 
   const trackPlayerInit = async () => {
     await TrackPlayer.setupPlayer();
@@ -51,41 +53,39 @@ const ItemList = ({name, url, duration, playerRef}) => {
 
   const play = () => {
     TrackPlayer.play();
-    playerRef.current.snapTo(2)
+    playerRef.current.snapTo(1);
     setPauseIcon(true);
     actions.toggle;
   };
   const pause = () => {
     TrackPlayer.pause();
     setPauseIcon(false);
-    playerRef.current.snapTo(0)
+    // playerRef.current.snapTo(0);
     actions.toggle;
   };
   return (
-    <Card
-      elevation={2}
-      icon="camera"
-      style={{
-        backgroundColor: theme.light.colors.primary3,
-        height: 65,
-        borderRadius: 15,
-        margin: 7,
-      }}>
-      <Card.Title
-        title={name}
-        subtitle={duration}
-        titleStyle={{fontSize: 18, color: theme.light.colors.secondary}}
-        subtitleStyle={{color: theme.light.colors.secondary}}
-        right={(props) => (
-          <IconButton
-            {...props}
-            icon={pauseIcon ? 'pause' : 'play'}
-            color={theme.light.colors.secondary}
-            onPress={pauseIcon ? pause : play}
-          />
-        )}
-      />
-    </Card>
+    <Div bg="white" m="lg" p="lg" shadow="md" rounded="lg">
+      <Div row>
+        <Div flex={1} rounded="md" row flexWrap="wrap" alignSelf="flex-start">
+          <Text fontSize="xl" color="secondary">
+            {name}
+          </Text>
+        </Div>
+
+        <Div row rounded="md">
+          <Button bg="none" onPress={pauseIcon ? pause : play}>
+            {pauseIcon ? (
+              <Icon name="pause" fontFamily="Feather" color="red500" />
+            ) : (
+              <Icon name="play" fontFamily="Feather" color="red500" />
+            )}
+          </Button>
+          <Button bg="none">
+            <Icon name="download" fontFamily="Feather" ml="lg" color="red500" />
+          </Button>
+        </Div>
+      </Div>
+    </Div>
   );
 };
 

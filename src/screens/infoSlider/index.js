@@ -4,6 +4,8 @@ import {IntroSlides} from '_constants/mocks';
 import Image from 'react-native-fast-image';
 import DoneButtons from './DoneButtons';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import {t} from '_translations/i18n';
+
 import {useWindowDimensions, StatusBar, I18nManager} from 'react-native';
 const Slider = () => {
   const {width} = useWindowDimensions();
@@ -19,10 +21,10 @@ const Slider = () => {
         </Div>
         <Div>
           <Text fontSize="4xl" textAlign="center" color="secondary">
-            {item.title}
+            {t(item.title)}
           </Text>
-          <Text fontSize="2xl" textAlign="center" color="gray500">
-            {item.body}
+          <Text fontSize="2xl" textAlign="center" color="gray500" m="sm">
+          {t(item.body)}
           </Text>
         </Div>
         {item.key === '3' ? <DoneButtons /> : null}

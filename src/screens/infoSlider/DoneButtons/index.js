@@ -3,7 +3,8 @@ import {useWindowDimensions} from 'react-native';
 import {Button, Div} from 'react-native-magnus';
 import {useApp} from '_globals/state/app';
 import * as Animatable from 'react-native-animatable';
-const Buttons = () => {
+import {t} from '_translations/i18n'
+const Buttons = ({nvigation}) => {
   const {height} = useWindowDimensions();
   const [loading, setLoading] = useState(false);
   const [, {setLaunched}] = useApp();
@@ -12,6 +13,7 @@ const Buttons = () => {
     setLoading(true);
     await setLaunched();
     setLoading(false);
+    nvigation.navigate('Home')
   };
   return (
     <Div h={height * 0.3} justifyContent="center" w="100%">
@@ -27,7 +29,7 @@ const Buttons = () => {
 
           loading={loading}
           underlayColor="red500">
-          Download Full Khatma
+         {t('slider.third.button1')} 
         </Button>
       </Animatable.View>
       <Animatable.View animation="slideInRight">
@@ -42,7 +44,7 @@ const Buttons = () => {
           loading={loading}
           color="black"
           underlayColor="red500">
-          Continue Online
+           {t('slider.third.button2')}
         </Button>
       </Animatable.View>
     </Div>
