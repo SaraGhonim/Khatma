@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {forwardRef} from 'react';
 import {
   View,
   Image,
@@ -6,33 +6,35 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
-  FlatList,
-} from 'react-native'
+} from 'react-native';
 // import { BlurView } from 'expo-blur'
-import  Ionicons  from 'react-native-vector-icons/Ionicons'
-import BottomSheet from 'reanimated-bottom-sheet'
-import Animated from 'react-native-reanimated'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
-import { BlurView, VibrancyView } from "@react-native-community/blur";
-import List from '_components/list';
-import {Div} from 'react-native-magnus';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import BottomSheet from 'reanimated-bottom-sheet';
+import Animated from 'react-native-reanimated';
+import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
+import {BlurView} from '@react-native-community/blur';
+import {usePlayer} from '_globals/state/player';
+import {t} from 'i18n-js';
+import {usePlaybackState} from 'react-native-track-player';
+import {ActivityIndicator} from 'react-native-paper';
+import ProgressBar from './ProgressBar';
+import {Button, Div, Icon} from 'react-native-magnus';
+const AnimatedView = Animated.View;
+const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
 
-const AnimatedView = Animated.View
-const AnimatedBlurView = Animated.createAnimatedComponent(BlurView)
-
-const songCoverSizes = [50, Dimensions.get('window').width - 100]
+const songCoverSizes = [50, Dimensions.get('window').width - 100];
 const songCoverTopPositions = [
   10,
   Dimensions.get('window').width / 2 - songCoverSizes[1] / 2,
-]
+];
 const songCoverLeftPositions = [
   20,
   Dimensions.get('window').width / 4 - songCoverSizes[1] / 32,
-]
+];
 const snapPoints = [
   70,
   songCoverSizes[1] + songCoverTopPositions[1] + 15 + 24 + 10 + 30 + 28,
-]
+];
 
 const song = {
   id: '0',
@@ -40,99 +42,130 @@ const song = {
   album: 'TIM',
   artist: 'Avicii',
   length: '3:04',
-}
+};
 
-const songs = [...Array(40)].map((_, index) => ({
-  id: `${index}`,
-  name: 'Song Name',
-  artist: 'Artist Name',
-  cover: '#' + (((1 << 24) * Math.random()) | 0).toString(16),
-}))
+const Player = forwardRef((props, ref) => {
+  let fall = new Animated.Value(1);
+  const playerState = usePlaybackState();
+  console.log('playerState', playerState);
+  const [
+    {selectedTrack},
+    {togglePlayback, skipToPrevious, skipToNext},
+  ] = usePlayer();
 
-const AppleMusic = () => {
-  const bottomSheetRef = React.useRef(null);
-  let fall = new Animated.Value(1)
-
+  console.log('selectedTrack', selectedTrack);
+  const screenName = 'Home.';
   const animatedSongCoverTopPosition = Animated.interpolate(fall, {
     inputRange: [0, 1],
     outputRange: songCoverTopPositions.slice().reverse(),
     extrapolate: Animated.Extrapolate.CLAMP,
-  })
+  });
 
   const animatedSongCoverSize = Animated.interpolate(fall, {
     inputRange: [0, 1],
     outputRange: [songCoverSizes[0], songCoverSizes[1]].slice().reverse(),
     extrapolate: Animated.Extrapolate.CLAMP,
-  })
+  });
 
   const animatedHeaderContentOpacity = Animated.interpolate(fall, {
     inputRange: [0.75, 1],
     outputRange: [0, 1],
     extrapolate: Animated.Extrapolate.CLAMP,
-  })
+  });
 
   const onFlatListTouchStart = () => {
-    bottomSheetRef.current.snapTo(0)
-  }
+    ref.current.snapTo(0);
+  };
 
   const onHeaderPress = () => {
-    bottomSheetRef.current.snapTo(1)
-  }
+    // togglePlayback();
+    ref.current.snapTo(1);
+  };
 
   const renderContent = () => {
     const animatedBackgroundOpacity = Animated.sub(
       1,
-      animatedHeaderContentOpacity
-    )
+      animatedHeaderContentOpacity,
+    );
     const animatedContentOpacity = Animated.interpolate(fall, {
       inputRange: [0, 1],
       outputRange: [1, 0],
       extrapolate: Animated.Extrapolate.CLAMP,
-    })
+    });
 
     return (
       <AnimatedView style={[styles.contentContainer]}>
         <AnimatedView
           style={[
             styles.contentBackground,
-            { opacity: animatedBackgroundOpacity },
+            {opacity: animatedBackgroundOpacity},
           ]}
         />
 
-        <AnimatedView style={{ opacity: animatedContentOpacity }}>
+        <AnimatedView style={{opacity: animatedContentOpacity}}>
           <AnimatedView
             style={{
               height: Animated.add(
                 Animated.sub(animatedSongCoverSize, snapPoints[0]),
-                animatedSongCoverTopPosition
+                animatedSongCoverTopPosition,
               ),
             }}
           />
 
-          <View style={styles.seekBarContainer}>
-            <View style={styles.seekBarTrack} />
-            <View style={styles.seekBarThumb} />
-            <View style={styles.seekBarTimingContainer}>
-              <Text style={styles.seekBarTimingText}>0:00</Text>
-              <Text style={styles.seekBarTimingText}>{`-${song.length}`}</Text>
-            </View>
-          </View>
-
-          <Text style={styles.songTitleLarge}>Surat Al-Fatiha</Text>
-          {/* <Text style={styles.songInfoText}>{`${song.artist} ⏤ ${
-            song.album
-          }`}</Text> */}
+          <ProgressBar />
+          <Div row justifyContent="center" alignItems="center" mt="xl">
+            <Button
+              onPress={skipToNext}
+              bg="white"
+              borderless
+              shadow="sm"
+              h={40}
+              w={40}
+              rounded="circle"
+              alignSelf="center">
+              <Icon name="skip-forward" color="red500" fontFamily="Feather" />
+            </Button>
+            <Button
+              onPress={togglePlayback}
+              bg="red500"
+              h={60}
+              w={60}
+              mx="xl"
+              rounded="circle"
+              shadow="md"
+              borderless>
+              <Icon name={iconName} color="white" fontFamily="Feather" />
+            </Button>
+            <Button
+              onPress={skipToPrevious}
+              bg="white"
+              borderless
+              shadow="sm"
+              h={40}
+              w={40}
+              rounded="circle"
+              alignSelf="center">
+              <Icon name="skip-back" color="red500" fontFamily="Feather" />
+            </Button>
+          </Div>
+          <Text style={styles.songTitleLarge}>
+            {selectedTrack ? t(screenName + selectedTrack?.title) : 'No Track'}
+          </Text>
+          <Text
+            style={
+              styles.songInfoText
+            }>{`${selectedTrack.artist} ⏤ ${selectedTrack?.album}`}</Text>
         </AnimatedView>
       </AnimatedView>
-    )
-  }
+    );
+  };
 
   const renderSongCover = () => {
     const animatedSongCoverLeftPosition = Animated.interpolate(fall, {
       inputRange: [0, 1],
       outputRange: songCoverLeftPositions.slice().reverse(),
       extrapolate: Animated.Extrapolate.CLAMP,
-    })
+    });
 
     return (
       <AnimatedView
@@ -145,27 +178,30 @@ const AppleMusic = () => {
             left: animatedSongCoverLeftPosition,
             top: animatedSongCoverTopPosition,
           },
-        ]}
-      >
+        ]}>
         <Image
           key={'song-cover'}
           style={styles.songCoverImage}
           source={require('_assets/images/pattern.png')}
         />
       </AnimatedView>
-    )
-  }
-
+    );
+  };
+  const iconName =
+    playerState === 'playing'
+      ? 'pause'
+      : playerState === 'paused' || playerState === 'stopped'
+      ? 'play'
+      : 'play';
   const renderHeader = () => {
     const animatedBackgroundOpacity = Animated.sub(
       1,
-      animatedHeaderContentOpacity
-    )
+      animatedHeaderContentOpacity,
+    );
     return [
       <TouchableWithoutFeedback
         key={'header-container'}
-        onPress={onHeaderPress}
-      >
+        onPress={onHeaderPress}>
         <AnimatedView style={styles.headerContainer}>
           <AnimatedView
             style={[
@@ -173,41 +209,45 @@ const AppleMusic = () => {
               {
                 opacity: animatedBackgroundOpacity,
               },
-            ]}
-          >
+            ]}>
             {renderHandler()}
           </AnimatedView>
           <AnimatedBlurView
             blurAmount={50}
-            
             style={[
               styles.headerContentContainer,
               {
                 opacity: animatedHeaderContentOpacity,
               },
-            ]}
-          > 
+            ]}>
             <View style={styles.headerTopBorder} />
             {/* <Text style={styles.songTitleSmall}>Surat Al-Fatiha</Text> */}
             <TouchableOpacity style={styles.headerActionButton}>
-            <Text style={styles.songTitleSmall}>Surat Al-Fatiha</Text>
-
-              <Ionicons name="pause" size={32} color="white" />
+              <Text style={styles.songTitleSmall}>
+                {selectedTrack
+                  ? t(screenName + selectedTrack?.title)
+                  : 'No Track'}
+              </Text>
+              {playerState === 'STATE_BUFFERING' ? (
+                <ActivityIndicator />
+              ) : (
+                <Ionicons name={iconName} size={32} color="white" />
+              )}
             </TouchableOpacity>
-            <TouchableOpacity style={styles.headerActionButton}>
-            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.headerActionButton}></TouchableOpacity>
           </AnimatedBlurView>
         </AnimatedView>
       </TouchableWithoutFeedback>,
       renderSongCover(),
-    ]
-  }
+    ];
+  };
 
   const renderShadow = () => {
     const animatedShadowOpacity = Animated.interpolate(fall, {
       inputRange: [0, 1],
       outputRange: [0.5, 0],
-    })
+    });
 
     return (
       <AnimatedView
@@ -219,8 +259,8 @@ const AppleMusic = () => {
           },
         ]}
       />
-    )
-  }
+    );
+  };
 
   const renderHandler = () => {
     const animatedBar1Rotation = (outputRange: number[]) =>
@@ -228,7 +268,7 @@ const AppleMusic = () => {
         inputRange: [0, 1],
         outputRange: outputRange,
         extrapolate: Animated.Extrapolate.CLAMP,
-      })
+      });
 
     return (
       <View style={styles.handlerContainer}>
@@ -242,7 +282,7 @@ const AppleMusic = () => {
                   rotate: Animated.concat(
                     // @ts-ignore
                     animatedBar1Rotation([0.3, 0]),
-                    'rad'
+                    'rad',
                   ),
                 },
               ],
@@ -259,7 +299,7 @@ const AppleMusic = () => {
                   rotate: Animated.concat(
                     // @ts-ignore
                     animatedBar1Rotation([-0.3, 0]),
-                    'rad'
+                    'rad',
                   ),
                 },
               ],
@@ -267,48 +307,23 @@ const AppleMusic = () => {
           ]}
         />
       </View>
-    )
-  }
-
-  const renderSongItem = ({ item }: { item: any }) => {
-    return (
-      <View style={styles.songListItemContainer}>
-        <View
-          style={[
-            {
-              backgroundColor: `${item.cover}`,
-            },
-            styles.songListItemCover,
-          ]}
-        />
-        <View style={styles.songListItemInfoContainer}>
-          <Text>{item.name}</Text>
-          <Text style={styles.songListItemSecondaryText}>{item.artist}</Text>
-        </View>
-      </View>
-    )
-  }
+    );
+  };
 
   return (
-    <View style={styles.container}>
-<Div flex={1} bg="primary">
-  <List playerRef={bottomSheetRef} />
-
+    <>
       <BottomSheet
-        ref={bottomSheetRef}
+        ref={ref}
         initialSnap={0}
         callbackNode={fall}
         snapPoints={snapPoints}
-       renderHeader={renderHeader}
+        renderHeader={renderHeader}
         renderContent={renderContent}
       />
-      
       {renderShadow()}
-  
-  </Div>
-    </View>
-  )
-}
+    </>
+  );
+});
 
 const styles = StyleSheet.create({
   // Screen
@@ -372,7 +387,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     minHeight: 70,
     minWidth: 50,
-    flexDirection:'row'
+    flexDirection: 'row',
   },
 
   // Handler
@@ -423,7 +438,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 16,
     lineHeight: 16,
-    marginLeft:16
+    marginLeft: 16,
   },
 
   songInfoText: {
@@ -500,6 +515,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#8E8D92',
   },
-})
+});
 
-export default AppleMusic
+export default Player;

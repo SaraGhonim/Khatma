@@ -16,203 +16,208 @@ export const IntroSlides = [
   {
     key: '3',
     title: 'slider.third.title',
-    body: "slider.third.body",
+    body: 'slider.third.body',
     image: require('_assets/images/pattern.png'),
   },
 ];
 
-const Surahs = [
+export const Surahs = [
   {
-    id: 1,
+    id: '1',
     url:
       'https://drive.google.com/uc?export=open&id=1e7Jw-8yLDWl4slWqlVvJRWRJnh56qche',
-    name: 'Home.1',
-    status: 'play',
+    title: '1',
+    artist: 'Ibrahim Elmahgraby',
     duration: '00:01:05',
   },
   {
-    id: 2,
+    id: '2',
     url:
       'http://docs.google.com/uc?export=open&id=1E2aT-M8dkRP71B2zD6YrPguC7APLFGaZ',
-    name: 'Home.2',
-    status: 'play',
+    title: '2',
+
+    artist: 'Ibrahim Elmahgraby',
     duration: '02:20:00',
   },
   {
-    id: 3,
+    id: '3',
     url:
       'http://docs.google.com/uc?export=open&id=1xYCawOMDJMm8NIOoXCYfQlx2feVzJp63',
-    name: 'Home.3',
-    status: 'play',
+    title: '3',
+
+    artist: 'Ibrahim Elmahgraby',
     duration: '01:50:00',
   },
-
   {
-    id: 4,
+    id: '4',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.4',
-    status: 'play',
+    title: '4',
+
+    artist: 'Ibrahim Elmahgraby',
     duration: '01:44:00',
   },
   {
-    id: 5,
+    id: '5',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.5',
-    status: 'play',
+    title: '5',
+
+    artist: 'Ibrahim Elmahgraby',
     duration: '01:47:00',
   },
   {
-    id: 6,
+    id: '6',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.6',
-    status: 'play',
+    title: '6',
+
+    artist: 'Ibrahim Elmahgraby',
     duration: '01:40:00',
   },
 
   {
-    id: 7 ,
+    id: '7',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.7',
-    status: 'play',
+    title: '7',
+
+    artist: 'Ibrahim Elmahgraby',
     duration: '01:40:00',
   },
   {
-    id: 8,
+    id: '8',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.8',
-    status: 'play',
+    title: '8',
+
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 9,
+    id: '9',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.9',
-    status: 'play',
+    title: '9',
+
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 10,
+    id: '10',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.10',
-    status: 'play',
+    title: '10',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 11,
+    id: '11',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.11',
-    status: 'play',
+    title: '11',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 12,
+    id: '12',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.12',
-    status: 'play',
+    title: '12',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 13,
+    id: '13',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.13',
-    status: 'play',
+    title: '13',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 14,
+    id: '14',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.14',
-    status: 'play',
+    title: '14',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 15,
+    id: '15',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.15',
-    status: 'play',
+    title: '15',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 16,
+    id: '16',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.16',
-    status: 'play',
+    title: '16',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 17,
+    id: '17',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.17',
-    status: 'play',
+    title: '17',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 18,
+    id: '18',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.18',
-    status: 'play',
+    title: '18',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 19,
+    id: '19',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.19',
-    status: 'play',
+    title: '19',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 20,
+    id: '20',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.20',
-    status: 'play',
+    title: '20',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 21,
+    id: '21',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.21',
-    status: 'play',
+    title: '21',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 22,
+    id: '22',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.22',
-    status: 'play',
+    title: '22',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 23,
+    id: '23',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.23',
-    status: 'play',
+    title: '23',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 24,
+    id: '24',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.24',
-    status: 'play',
+    title: '24',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 25,
+    id: '25',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.25',
-    status: 'play',
+    title: '25',
+    artist: 'Ibrahim Elmahgraby',
   },
   {
-    id: 26,
+    id: '26',
     url:
       'http://docs.google.com/uc?export=open&id=18_kcR9izZi1ty-Cj5Yj-43h5GWnl627m',
-    name: 'Home.26',
-    status: 'play',
+    title: '26',
+    artist: 'Ibrahim Elmahgraby',
   },
 ];
-
-export default Surahs;

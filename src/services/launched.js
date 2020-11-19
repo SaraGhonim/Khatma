@@ -5,7 +5,7 @@ export const getLaunched = async () => {
   try {
     const launched = await AsyncStorage.getItem(LAUNCHED_KEY);
     if (launched) {
-      return false;
+      return true;
     } else {
       return false;
     }
